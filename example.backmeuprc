@@ -1,0 +1,18 @@
+# Backmeup Configuration Parameters
+TIMEZONE="Asia/Kolkata" #Your timezone, for a better timestamp in archived filenames
+DBHOST="localhost" #MySQL Hostname
+DBUSER="root" #MySQL user that can dump all databases
+DBPASSWORD="password" #MySQL password
+DBPORT="3306" #MySQL Port Number
+FILESROOT="/Users/kuldip/db_backups" #root of your (virtual) hosting files, E.g: For apache, it is /var/www, for nginx, it's /usr/share/nginx/html "WITHOUT THE END TRAILING SLASH"
+BASEFOLDER="/Users/kuldip/Documents/db_daily_backup" #Temporary folder to create database dump folder (a subfolder will be created to this folder upon dumping)
+BACKUPFOLDER="backmeup-local" #your backup folder that'll be created on Backup provider
+COMPRESSION="tar" # The archive should be compressed as tar.gz or 7-zip. Values are "tar" and "7zip"
+SEVENZIP_COMPRESSION_PASSWORD="" # If the archive is compressed as 7z, the encryption password. If blank, no compression will be done
+METHOD="s3" #Method name, can be "dropbox", "s3", "mega" or "webdav". More providers soon
+S3_BUCKET_NAME="zebrapro-backup" #AWS S3 Bucket name
+S3_STORAGE_CLASS="STANDARD_IA" #AWS S3 storage class. Values are "STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA". http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
+WEBDAV_USER="admin" #Owncloud user for WebDAV Access
+WEBDAV_PASSWORD="password" #Owncloud Password for WebDAV Access
+WEBDAV_ENDPOINT="https://nextcloud-host.com/remote.php/webdav/" #NextCloud WebDAV Host, you can get this endpoint from the low end "cog" Settings icon from your OwnCloud WebUI, This has to have the ending / character
+SKIP_DB=information_schema,performance_schema,sys,mysql
