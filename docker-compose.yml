@@ -1,0 +1,34 @@
+version: '3.9'
+
+networks:
+  mysql_network:
+
+services:
+  main-mysql:
+    image: mysql:latest
+    container_name: main-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    volumes:
+      - "/Users/kuldip/mysql-docker/data:/var/lib/mysql"
+    user: "501:501"
+    networks:
+      - mysql_network
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "80:80"
+    networks:
+      - mysql_network
+    environment:
+      PMA_HOST: main-mysql
+      PMA_PORT: 3306
+    restart: always
+
